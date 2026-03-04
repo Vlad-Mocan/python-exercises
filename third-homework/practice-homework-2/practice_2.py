@@ -47,14 +47,14 @@ def most_frequent_word(text):
         seen_words[word] = seen_words.get(word, 0) + 1
 
     max_value = 0
-    most_frequent_word = None
+    most_freq_word = None
 
     for key, value in seen_words.items():
         if value > max_value:
             max_value = value
-            most_frequent_word = key
+            most_freq_word = key
 
-    return most_frequent_word
+    return most_freq_word
 
 
 def change_dictionary(name_age_dictionary):
