@@ -1,5 +1,5 @@
-def merge_lists(list1, list2):
-    return list1 + list2
+def merge_lists(first_list, second_list):
+    return first_list + second_list
 
 
 def get_first_value(t):

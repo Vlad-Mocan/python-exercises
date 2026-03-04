@@ -1,5 +1,5 @@
 def delete_duplicates(items):
-    return set(items)
+    return list(set(items))
 
 
 def max_age(items):
@@ -26,7 +26,7 @@ def most_frequent(numbers):
 
         # seen_numbers[number] = seen_numbers.get(number, 0) + 1
 
-    max_value = 0
+    max_value = -1
     most_frequent_number = None
 
     for key, value in seen_numbers.items():
@@ -38,7 +38,7 @@ def most_frequent(numbers):
 
 
 def most_frequent_word(text):
-    word_list = text.split()
+    word_list = text.lower().split()
     if not word_list:
         return None
 
