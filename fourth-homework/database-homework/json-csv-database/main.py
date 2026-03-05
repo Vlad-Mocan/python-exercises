@@ -91,10 +91,10 @@ def main():
             ext = get_extension(filename)
 
             if ext == ".json":
-                with open(filename, "r") as f:
+                with open(filename, "r", encoding="utf-8") as f:
                     headers = json.load(f).get("schema", [])
             elif ext == ".csv":
-                with open(filename, "r") as f:
+                with open(filename, "r", encoding="utf-8") as f:
                     headers = f.readline().strip().split(",")
 
             record = {}

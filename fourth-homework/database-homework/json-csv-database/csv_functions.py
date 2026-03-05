@@ -1,5 +1,4 @@
 import csv
-import os
 
 
 def confirm_overwrite(filename):
@@ -24,8 +23,6 @@ def init_csv_db(filename, headers):
 
 
 def add_csv_record(filename, record):
-
-    rows = []
     with open(filename, "r", encoding="utf-8") as f:
         reader = list(csv.reader(f))
         header = reader[0]
