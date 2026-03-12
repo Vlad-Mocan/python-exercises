@@ -1,11 +1,5 @@
 import json
-
-
-def confirm_overwrite(filename):
-    response = input(
-        f"{filename} already exists and will be overwritten! Are you sure you want to continue? (y/n): "
-    )
-    return response.lower() == "y"
+from utils import confirm_overwrite
 
 
 def load_json_file(filename):
@@ -29,6 +23,7 @@ def init_json_db(filename, headers):
 
     data = {"schema": headers, "records": []}
     save_json_file(filename, data)
+    print(f"Database initialized: {filename}")
 
 
 def add_json_record(filename, record):
@@ -71,20 +66,25 @@ def search_json_record(filename, field, value):
         print("No records found.")
 
 
-def update_json_record(filename, search_field, search_value, update_data):
+def update_json_record(
+    filename, search_field, search_value, update_field, update_value
+):
     data = load_json_file(filename)
-    updated_count = 0
+
+    if update_field not in data["schema"] or update_field == "id":
+        print(f"Cannot update field '{update_field}'")
+        return
+
+    updated = False
 
     for record in data["records"]:
         if record.get(search_field) == search_value:
-            for key, val in update_data.items():
-                if key in data["schema"]:
-                    record[key] = val
-            updated_count += 1
+            record[update_field] = update_value
+            updated = True
 
-    if updated_count > 0:
+    if updated:
         save_json_file(filename, data)
-        print(f"Updated {updated_count} record(s).")
+        print("Record updated successfully.")
     else:
         print("No matching record found.")
 
@@ -102,3 +102,8 @@ def delete_json_record(filename, field, value):
     data["records"] = new_list
     save_json_file(filename, data)
     print(f"Deleted {deleted_count} records.")
+
+
+def get_json_schema(filename):
+    data = load_json_file(filename)
+    return data["schema"]

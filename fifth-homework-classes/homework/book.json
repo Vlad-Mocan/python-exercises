@@ -1,0 +1,34 @@
+{
+    "schema": [
+        "id",
+        "title",
+        "author",
+        "year"
+    ],
+    "records": [
+        {
+            "id": 1,
+            "title": "The Hobbit",
+            "author": "J.R.R. Tolkien",
+            "year": 1937
+        },
+        {
+            "id": 2,
+            "title": "Foundation",
+            "author": "Isaac Asimov",
+            "year": 1951
+        },
+        {
+            "id": 3,
+            "title": "Brave New World",
+            "author": "Aldous Huxley",
+            "year": 1932
+        },
+        {
+            "id": 4,
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "year": 1925
+        }
+    ]
+}
